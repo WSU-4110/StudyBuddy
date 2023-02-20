@@ -1,8 +1,8 @@
-module com.example.studdybuddy {
+module com.example.studybuddy {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.example.studdybuddy to javafx.fxml;
-    exports com.example.studdybuddy;
+    opens com.example.studybuddy to javafx.fxml;
+    exports com.example.studybuddy;
 }

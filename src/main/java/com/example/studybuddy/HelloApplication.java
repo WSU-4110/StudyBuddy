@@ -1,4 +1,4 @@
-package com.example.studdybuddy;
+package com.example.studybuddy;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
