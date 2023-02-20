@@ -8,7 +8,7 @@
       fx:controller="com.example.studybuddy.HomeController">
 
     <VBox alignment="CENTER" layoutX="480" layoutY="200" spacing="50" />
-     <Button layoutX="526.0" layoutY="459.0" onAction="#switchToFlashcards" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 24px; -fx-font-weight: bold;" text="Flashcards" />
-     <Button layoutX="524.0" layoutY="349.0" onAction="#switchToMindmaps" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 24px; -fx-font-weight: bold;" text="Mindmaps" />
+     <Button fx:id="mindmapsButton" layoutX="524.0" layoutY="349.0" onAction="#switchToMindmaps" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 24px; -fx-font-weight: bold;" text="Mindmaps" />
+     <Button fx:id="flashcardsButton" layoutX="526.0" layoutY="459.0" onAction="#switchToFlashcards" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 24px; -fx-font-weight: bold;" text="Flashcards" />
 
 </Pane>
