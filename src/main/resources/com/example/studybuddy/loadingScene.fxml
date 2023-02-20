@@ -11,7 +11,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7BF4F;" />
       <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@loadingScreen.png" />
+            <Image url="@loadingScene.png" />
          </image>
       </ImageView>
    </children>
