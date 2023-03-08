@@ -1,38 +1,76 @@
 package com.example.studybuddy;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Deck {
-    private String subject;
-    private ArrayList<Flashcard> deck;
+public class Deck implements Serializable {
+    private String title;
+    private ArrayList<Card> cards;
+
+    public Deck(String title, ArrayList<Card> cards) {
+        this.title = title;
+        this.cards = cards;
+    }
+
+    /**
+     * Add new Deck to the list
+     *
+     * @param title
+     */
+    public Deck(String title) {
+        this.title = title;
+        this.cards = new ArrayList<Card>();
+    }
 
     public Deck() {
-        this.subject = "No name";
-        this.deck = new ArrayList<>();
+        this(null, null);
     }
 
-    public Deck(String subject, ArrayList<Flashcard> deck) {
-        this.subject = subject;
-        this.deck = deck;
+    // * Card Methods
+    public void addCard(Card card) {
+        this.cards.add(card);
+        // TODO call service here to save to file
     }
 
-    public String getSubject() {
-        return this.subject;
+    public void removeCard(Card card) {
+        // removes the first instance of the card
+        this.cards.remove(card);
+        // call service here to remove from file if found
+
     }
 
-    public ArrayList<Flashcard> getDeck() {
-        return this.deck;
+    public ArrayList<Card> getCards() {
+        return this.cards;
+        // todo read from file
     }
 
-    public void setSubject(String name) {
-        this.subject = name;
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
     }
 
-    public void addCard(Flashcard card) {
-        this.deck.add(card);
+    public boolean isEmpty() {
+        return this.cards.isEmpty();
     }
 
-    public void removeCard(Flashcard card) {
-        this.deck.remove(card);
+    public int cardsSize() {
+        return this.cards.size();
+    }
+
+    public boolean containsCard(Card card) {
+        return this.cards.contains(card);
+    }
+
+    public String getTitleOfDeck() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+        // todo call service here to save to file
+    }
+
+    @Override
+    public String toString() {
+        return "Deck [title=" + title + ", cards=" + cards + "]";
     }
 }

@@ -11,6 +11,10 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+    private static Stage primaryStage;
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {

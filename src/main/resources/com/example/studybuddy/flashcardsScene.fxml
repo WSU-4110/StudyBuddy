@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F7BF4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.flashcards.controller.DecksController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F7BF4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studybuddy.Card">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -19,12 +19,8 @@
                <children>
                   <TableView fx:id="tbl_decks" prefHeight="460.0" prefWidth="841.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="col_number" prefWidth="32.0" />
-                      <TableColumn fx:id="col_deck_name" prefWidth="428.00000762939453" text="Deck name" />
-                        <TableColumn fx:id="col_cards" prefWidth="88.0" text="Cards" />
-                        <TableColumn fx:id="col_starred" prefWidth="93.0" text="Starred" />
-                        <TableColumn fx:id="col_last_score" minWidth="4.0" prefWidth="101.0" text="Last score [%]" />
-                        <TableColumn fx:id="col_average_score" minWidth="4.0" prefWidth="95.0" text="Avg card skill" />
+                      <TableColumn fx:id="col_deck_name" prefWidth="132.00007283687592" text="Deck name" />
+                        <TableColumn fx:id="col_cards" prefWidth="707.199951171875" text="Cards" />
                     </columns>
                      <effect>
                         <InnerShadow />
@@ -50,11 +46,10 @@
          <bottom>
             <Pane prefHeight="90.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btn_export" layoutX="81.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#exportToFileAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Export to file" />
-                  <Button fx:id="btn_show_stats" layoutX="238.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#showStatsAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Statistics" />
-                  <Button fx:id="btn_study" layoutX="400.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#studyAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Study!" />
-                  <Button fx:id="btn_add_new" layoutX="564.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#addNewAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Add new" />
-                  <Button fx:id="btn_delete" layoutX="741.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#deleteAction" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Delete" />
+                  <Button fx:id="btn_export" layoutX="81.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#addDeck" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Add" />
+                  <Button fx:id="btn_study" layoutX="527.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#onDeleteDeck" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Delete" />
+                  <Button fx:id="btn_add_new" layoutX="292.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#onEditDeck" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Edit" />
+                  <Button fx:id="btn_delete" layoutX="741.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#onShowDeck" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: FFFFFF;" text="Show" />
                </children>
             </Pane>
          </bottom>
