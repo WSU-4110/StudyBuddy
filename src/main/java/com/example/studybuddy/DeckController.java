@@ -62,7 +62,7 @@ public class DeckController {
         // todo check again
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/addEditDeck.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addEditDeck.fxml"));
             Parent root = loader.load();
             AddEditDeckController addEditDeckController = loader.getController();
             Stage modal = new Stage();
@@ -80,7 +80,7 @@ public class DeckController {
     public void onEditDeck(ActionEvent event) {
         if (this.selectedDeck != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/addEditDeck.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("addEditDeck.fxml"));
                 Parent root = loader.load();
                 AddEditDeckController addEditDeckController = loader.getController();
                 Stage modal = new Stage();
@@ -110,14 +110,13 @@ public class DeckController {
     }
     public void onShowDeck(ActionEvent event) {
         if (this.selectedDeck != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/player.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("player.fxml"));
             try {
                 Parent root = loader.load();
                 PlayerController controller = loader.getController();
                 controller.initPlayer(selectedDeck);
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
-                scene.getStylesheets().add("/resources/css/player.css");
                 stage.setScene(scene);
                 stage.show();
             } catch (Exception e) {
@@ -128,7 +127,6 @@ public class DeckController {
         }
     }
 
-    // TODO check this method again
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }

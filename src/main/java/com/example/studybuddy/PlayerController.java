@@ -44,10 +44,9 @@ public class PlayerController {
 
         System.out.println("Switch to main");
         try {
-            root = FXMLLoader.load(getClass().getResource("/resources/fxml/main.fxml"));
+            root = FXMLLoader.load(getClass().getResource("homepage.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
-            scene.getStylesheets().add("/resources/css/main.css");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -60,14 +59,13 @@ public class PlayerController {
 
         if (selectedCard != null) {
             System.out.println("Switch to editor");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/editor.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("editor.fxml"));
             try {
                 root = loader.load();
                 EditorController controller = loader.getController();
                 controller.initEditor(deck, this.selectedCard);
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
-                scene.getStylesheets().add("/resources/css/editor.css");
                 stage.setScene(scene);
                 stage.show();
             } catch (Exception e) {
@@ -82,14 +80,13 @@ public class PlayerController {
     public void addCardToDeck(ActionEvent event) throws Exception {
         // todo implement add card to deck
         System.out.println("Create New Card ");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/editor.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("editor.fxml"));
         try {
             root = loader.load();
             EditorController controller = loader.getController();
             controller.initEditor(deck);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
-            scene.getStylesheets().add("/resources/css/editor.css");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -99,9 +96,6 @@ public class PlayerController {
 
     }
 
-    /**
-     * Delete the selected card
-     */
     public void onDeleteCard(ActionEvent event) {
         System.out.println("Delete Card");
         if (this.selectedCard != null) {
@@ -122,7 +116,6 @@ public class PlayerController {
             // * Save to File
             this.ds.setDecks(tempDecks);
 
-            // todo move this to show cards method
             if (this.deck != null) {
                 playerTitle.setText(deck.getTitleOfDeck());
                 // * Populate ListView with Questions from Deck
@@ -145,11 +138,7 @@ public class PlayerController {
         }
     }
 
-    /**
-     * Initialize the PlayerController
-     *
-     * @param deck
-     */
+
     public void initPlayer(Deck deck) {
         this.deck = deck;
         if (this.deck != null) {

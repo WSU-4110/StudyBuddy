@@ -64,8 +64,6 @@ public class FlashcardController {
     }
 
     public void addDeck(ActionEvent event) {
-        // todo check again
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("addEditDeck.fxml"));
             Parent root = loader.load();

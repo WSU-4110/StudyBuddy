@@ -46,8 +46,6 @@ public class DataHandlingCard {
     }
 
     public void setDecks(ArrayList<Deck> decks) {
-        // TODO save to file all the decks, using object serialization
-
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("decks.ser"));
             os.writeObject(decks);

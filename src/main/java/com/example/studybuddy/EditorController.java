@@ -29,20 +29,17 @@ public class EditorController {
     Label mainLabel;
 
     public void backToDeck(ActionEvent event) {
-        // todo implement back to deck from the editor
     }
 
-    // todo on Back click from editor, go back to PlayerController
     public void switchToPlayer(ActionEvent event) {
         System.out.println("Switch to player");
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/player.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("player.fxml"));
             Parent root = loader.load();
             PlayerController controller = loader.getController();
             controller.initPlayer(this.deck);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
-            scene.getStylesheets().add("/resources/css/player.css");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -76,26 +73,20 @@ public class EditorController {
 
             // * Save to File
             this.ds.setDecks(tempDecks);
-            /**
-             * return to Player Controller
-             */
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/player.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("player.fxml"));
                 Parent root = loader.load();
                 PlayerController controller = loader.getController();
                 controller.initPlayer(revisedDeck);
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
-                scene.getStylesheets().add("/resources/css/player.css");
                 stage.setScene(scene);
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (this.selectedCard != null) {
-            /**
-             * Update the card
-             */
+
 
             System.out.println("Edit card");
             ArrayList<Card> cards = this.deck.getCards();
@@ -116,14 +107,13 @@ public class EditorController {
 
             // * Save to File
             this.ds.setDecks(tempDecks);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/player.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("player.fxml"));
             try {
                 Parent root = loader.load();
                 PlayerController controller = loader.getController();
                 controller.initPlayer(revisedDeck);
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
-                scene.getStylesheets().add("/resources/css/player.css");
                 stage.setScene(scene);
                 stage.show();
             } catch (Exception e) {
@@ -132,12 +122,6 @@ public class EditorController {
         }
     }
 
-    /**
-     * To Edit a Card
-     *
-     * @param deck
-     * @param selectedCard
-     */
     public void initEditor(Deck deck, Card selectedCard) {
         // todo implement init editor
         this.deck = deck;
@@ -149,11 +133,6 @@ public class EditorController {
         mainLabel.setText("Edit Card");
     }
 
-    /**
-     * To Create a New Card
-     *
-     * @param deck
-     */
     public void initEditor(Deck deck) {
         // * Loads the editor to create a new card
         this.deck = deck;

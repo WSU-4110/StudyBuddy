@@ -19,15 +19,9 @@ public class AddEditDeckController {
     @FXML
     Button cancelBtn;
 
-    /**
-     * Saving New Deck to the List
-     *
-     * @param event
-     */
     public void onSave(ActionEvent event) {
         // check if its a new deck or old deck
         if (this.deck != null) {
-            // todo implement for edit
             System.out.println("Edit Deck" + this.deck.toString());
             ArrayList<Deck> tempDecks = this.ds.getDecks();
             for (Deck d : tempDecks) {
@@ -57,7 +51,6 @@ public class AddEditDeckController {
 
     public void onCancel(ActionEvent event) {
         System.out.println("Cancelling");
-        // todo We need to stop calling initialize in Main Controller when we cancel the
         // modal
         modal.close();
     }
