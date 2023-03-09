@@ -12,11 +12,6 @@ public class Deck implements Serializable {
         this.cards = cards;
     }
 
-    /**
-     * Add new Deck to the list
-     *
-     * @param title
-     */
     public Deck(String title) {
         this.title = title;
         this.cards = new ArrayList<Card>();
@@ -26,22 +21,16 @@ public class Deck implements Serializable {
         this(null, null);
     }
 
-    // * Card Methods
     public void addCard(Card card) {
         this.cards.add(card);
-        // TODO call service here to save to file
     }
 
     public void removeCard(Card card) {
-        // removes the first instance of the card
         this.cards.remove(card);
-        // call service here to remove from file if found
-
     }
 
     public ArrayList<Card> getCards() {
         return this.cards;
-        // todo read from file
     }
 
     public void setCards(ArrayList<Card> cards) {
@@ -66,7 +55,6 @@ public class Deck implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-        // todo call service here to save to file
     }
 
     @Override

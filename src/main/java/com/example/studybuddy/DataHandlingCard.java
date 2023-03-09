@@ -9,18 +9,15 @@ import java.util.ArrayList;
 public class DataHandlingCard {
     ArrayList<Deck> decks = new ArrayList<Deck>();
     ArrayList<Card> cards = new ArrayList<Card>();
-
-    // * implement singleton pattern
     private final static DataHandlingCard INSTANCE = new DataHandlingCard();
 
     public static DataHandlingCard getInstance() {
         return INSTANCE;
     }
 
-    // Private Constructor - Singleton Pattern
     private DataHandlingCard() {
-        // cards.add(new Card("What is the capital of Alaska?", "Juneau"));
-        // cards.add(new Card("What is the capital of New York?", "Albany"));
+        //cards.add(new Card("What is the capital of Alaska?", "Juneau"));
+        //cards.add(new Card("What is the capital of New York?", "Albany"));
         // cards.add(new Card("What is the capital of Texas?", "Austin"));
         // cards.add(new Card("What is the capital of California?", "Sacramento"));
         // cards.add(new Card("What is the capital of Florida?", "Tallahassee"));
@@ -28,8 +25,8 @@ public class DataHandlingCard {
         // cards.add(new Card("What is the capital of Oregon?", "Salem"));
 
         // // create First Deck
-        // Deck deck = new Deck("Geography", cards);
-        // decks.add(deck);
+        //Deck deck = new Deck("Geography", cards);
+        //decks.add(deck);
 
         // // create Second Deck
         // cards = new ArrayList<Card>();
@@ -68,11 +65,10 @@ public class DataHandlingCard {
     }
 
     public ArrayList<Deck> getDecks() {
-        // TODO load from file
         try {
             ObjectInputStream is = new ObjectInputStream(new FileInputStream("decks.ser"));
             ArrayList<Deck> decks = (ArrayList<Deck>) is.readObject();
-            return decks; // dummy data
+            return decks;
         } catch (Exception e) {
             System.out.println("Error Deserializing decks");
             e.printStackTrace();

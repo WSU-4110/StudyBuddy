@@ -20,7 +20,6 @@ public class AddEditDeckController {
     Button cancelBtn;
 
     public void onSave(ActionEvent event) {
-        // check if its a new deck or old deck
         if (this.deck != null) {
             System.out.println("Edit Deck" + this.deck.toString());
             ArrayList<Deck> tempDecks = this.ds.getDecks();
@@ -39,7 +38,6 @@ public class AddEditDeckController {
 
         } else if (this.deck == null) {
             System.out.println("Creating new Deck");
-            // read from file all decks, then add new deck to the list
             ArrayList<Deck> tempDecks = this.ds.getDecks();
             tempDecks.add(new Deck(addTitleField.getText()));
             System.out.println("Saving " + tempDecks);
