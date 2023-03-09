@@ -66,7 +66,7 @@ public class DataHandlingCard {
 
     public ArrayList<Deck> getDecks() {
         try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream("com.example.studybuddy.decks"));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("decks.ser"));
             ArrayList<Deck> decks = (ArrayList<Deck>) is.readObject();
             return decks;
         } catch (Exception e) {

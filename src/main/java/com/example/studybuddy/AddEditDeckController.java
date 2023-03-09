@@ -38,7 +38,6 @@ public class AddEditDeckController {
 
         } else if (this.deck == null) {
             System.out.println("Creating new Deck");
-            // read from file all decks, then add new deck to the list
             ArrayList<Deck> tempDecks = this.ds.getDecks();
             tempDecks.add(new Deck(addTitleField.getText()));
             System.out.println("Saving " + tempDecks);
