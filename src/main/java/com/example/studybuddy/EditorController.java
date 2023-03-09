@@ -48,21 +48,14 @@ public class EditorController {
     }
 
     public void saveCard(ActionEvent event) {
-        // * implement Save Card
         this.question = questionTextArea.getText();
         this.answer = answerTextArea.getText();
         if (this.selectedCard == null) {
             System.out.println("New card");
-            // todo Create a Revised Deck, then read all decks from file, find this deck in
-            // there, replace with revised deck, then save it to file again
-
-            // * creating revised deck with new card in it
             Deck revisedDeck = this.deck;
             revisedDeck.addCard(new Card(this.question, this.answer));
             System.out.println("revised deck: " + revisedDeck.toString());
-            // * Read from File
             ArrayList<Deck> tempDecks = this.ds.getDecks();
-            // * find using old deck in the tempDecks and then replace with revisedDeck
             for (Deck d : tempDecks) {
                 if (d.getTitleOfDeck().equals(this.deck.getTitleOfDeck())) {
                     tempDecks.remove(d);
@@ -71,7 +64,6 @@ public class EditorController {
                 }
             }
 
-            // * Save to File
             this.ds.setDecks(tempDecks);
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("player.fxml"));
@@ -94,9 +86,7 @@ public class EditorController {
             cards.set(indexOfCard, new Card(this.question, this.answer));
             this.deck.setCards(cards);
             Deck revisedDeck = this.deck;
-            // * Read from File
             ArrayList<Deck> tempDecks = this.ds.getDecks();
-            // * find using old deck in the tempDecks and then replace with revisedDeck
             for (Deck d : tempDecks) {
                 if (d.getTitleOfDeck().equals(this.deck.getTitleOfDeck())) {
                     tempDecks.remove(d);
@@ -105,7 +95,6 @@ public class EditorController {
                 }
             }
 
-            // * Save to File
             this.ds.setDecks(tempDecks);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("player.fxml"));
             try {
@@ -123,7 +112,6 @@ public class EditorController {
     }
 
     public void initEditor(Deck deck, Card selectedCard) {
-        // todo implement init editor
         this.deck = deck;
         this.selectedCard = selectedCard;
         this.question = selectedCard.getQuestion();
@@ -134,7 +122,6 @@ public class EditorController {
     }
 
     public void initEditor(Deck deck) {
-        // * Loads the editor to create a new card
         this.deck = deck;
         this.question = "";
         this.answer = "";

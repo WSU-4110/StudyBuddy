@@ -20,7 +20,6 @@ public class AddEditDeckController {
     Button cancelBtn;
 
     public void onSave(ActionEvent event) {
-        // check if its a new deck or old deck
         if (this.deck != null) {
             System.out.println("Edit Deck" + this.deck.toString());
             ArrayList<Deck> tempDecks = this.ds.getDecks();

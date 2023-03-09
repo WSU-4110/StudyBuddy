@@ -32,12 +32,10 @@ public class DeckController {
 
         if (this.decks != null && !this.decks.isEmpty()) {
             System.out.println("Decks from file " + decks);
-            // ! Extract titles of decks and assign to ListView
             ArrayList<String> titles = new ArrayList<String>();
             for (Deck deck : this.decks) {
                 titles.add(deck.getTitleOfDeck());
             }
-            // * converted ArrayList to ObservableList
             ObservableList<String> observableList = FXCollections.observableList(titles);
             deckList.getItems().setAll(observableList);
         } else {
@@ -59,8 +57,6 @@ public class DeckController {
         });
     }
     public void addDeck(ActionEvent event) {
-        // todo check again
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("addEditDeck.fxml"));
             Parent root = loader.load();
@@ -97,7 +93,6 @@ public class DeckController {
         }
     }
     public void onDeleteDeck(ActionEvent event) {
-        // todo check again
         if (this.selectedDeck != null) {
             this.decks.remove(this.selectedDeck);
             this.ds.setDecks(this.decks);
