@@ -44,13 +44,12 @@ public class DataHandlingCard {
 
     public void setDecks(ArrayList<Deck> decks) {
         try {
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("decks.ser"));
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src/main/decks.ser"));
             os.writeObject(decks);
             System.out.println("Serialized data is saved in decks.ser");
         } catch (Exception e) {
             System.out.println("Error Serializing decks");
             e.printStackTrace();
-
         }
 
     }
@@ -66,10 +65,11 @@ public class DataHandlingCard {
 
     public ArrayList<Deck> getDecks() {
         try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream("decks.ser"));
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream("src/main/decks.ser"));
             ArrayList<Deck> decks = (ArrayList<Deck>) is.readObject();
             return decks;
         } catch (Exception e) {
+
             System.out.println("Error Deserializing decks");
             e.printStackTrace();
             return null;

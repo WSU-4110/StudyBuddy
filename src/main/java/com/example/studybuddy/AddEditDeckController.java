@@ -44,7 +44,6 @@ public class AddEditDeckController {
             this.ds.setDecks(tempDecks);
             modal.close();
         }
-
     }
 
     public void onCancel(ActionEvent event) {
