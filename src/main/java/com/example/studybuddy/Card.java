@@ -2,6 +2,8 @@ package com.example.studybuddy;
 
 import java.io.Serializable;
 public class Card implements Serializable {
+    private static Card single_instance=null;
+
     private String question;
     private String answer;
 
@@ -9,6 +11,13 @@ public class Card implements Serializable {
         this(null, null);
     }
 
+    public static Card card()
+    {
+        if(single_instance==null){
+            single_instance=new Card();
+        }
+        return single_instance;
+    }
     public Card(String question, String answer) {
         this.question = question;
         this.answer = answer;
