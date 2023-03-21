@@ -48,11 +48,7 @@ public class HomeController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    public void createMap(ActionEvent event){
-        Map map1= new Map();
-        com.example.studybuddy.Node nodeTest = map1.map[0];
-        System.out.println("new node object assigned to nodeTest");
-    }
+
     public void switchToFlashcards(ActionEvent event){
         try {
             Parent mindmapsParent = FXMLLoader.load(getClass().getResource("flashcardsScene.fxml"));

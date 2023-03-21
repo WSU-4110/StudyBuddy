@@ -19,10 +19,19 @@ public class HelloApplication extends Application {
             primaryStage.setScene(scene);
             primaryStage.setAlwaysOnTop(true);
             primaryStage.show();
-        } catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public static void Matrix(int m, int n) {
+        double x = m;
+        double y = n;
+        double xy[][] = new double[m][n];
+        System.out.println(xy[2][2]);
+    }
     public static void main(String[] args) {
         launch();
+        //Matrix(4,4);
     }
 }
