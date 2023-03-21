@@ -66,8 +66,10 @@ public class DataHandlingCard {
     public ArrayList<Deck> getDecks() {
         try {
             ObjectInputStream is = new ObjectInputStream(new FileInputStream("src/main/decks.ser"));
+            decks = (ArrayList<Deck>) is.readObject();
             return decks;
         } catch (Exception e) {
+
             System.out.println("Error Deserializing decks");
             e.printStackTrace();
             return null;
