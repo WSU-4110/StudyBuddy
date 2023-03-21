@@ -14,15 +14,28 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
+            HomeController homeController=new HomeController();
+            homeController.loadingScene();
+
             Parent root = FXMLLoader.load(getClass().getResource("homepage.fxml"));
             Scene scene = new Scene(root);
+
             primaryStage.setScene(scene);
             primaryStage.setAlwaysOnTop(true);
             primaryStage.show();
-        } catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public static void Matrix(int m, int n) {
+        double x = m;
+        double y = n;
+        double xy[][] = new double[m][n];
+        System.out.println(xy[2][2]);
+    }
     public static void main(String[] args) {
         launch();
+        //Matrix(4,4);
     }
 }
