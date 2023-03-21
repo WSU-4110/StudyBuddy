@@ -4,21 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Deck implements Serializable {
+    private static Deck instance = null;
     private String title;
     private ArrayList<Card> cards;
-
-    public Deck(String title, ArrayList<Card> cards) {
-        this.title = title;
-        this.cards = cards;
-    }
 
     public Deck(String title) {
         this.title = title;
         this.cards = new ArrayList<Card>();
     }
 
-    public Deck() {
-        this(null, null);
+    public static Deck getInstance(String title) {
+        if (instance == null) {
+            instance = new Deck(title);
+        }
+        return instance;
     }
 
     public void addCard(Card card) {
