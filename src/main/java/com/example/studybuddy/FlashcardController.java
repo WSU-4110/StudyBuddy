@@ -85,6 +85,7 @@ public class FlashcardController {
                 AddEditDeckController addEditDeckController = loader.getController();
                 Stage modal = new Stage();
                 modal.setTitle("Edit Deck");
+                modal.setAlwaysOnTop(true);
                 modal.initOwner(primaryStage);
                 modal.initModality(Modality.APPLICATION_MODAL);
                 modal.setScene(new Scene(root));
