@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -65,9 +67,7 @@ public class MindMapController implements Initializable {
         map1= new Map();
         mapf = new Scene(root,1000,1000);
         window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        root.getChildren().add(map1.map[0].r);
         window.setScene(mapf);
-        window.show();
 
         mapf.setOnMouseClicked(e-> mouse(e));
         //System.out.println("new node object assigned to nodeTest");
@@ -77,8 +77,8 @@ public class MindMapController implements Initializable {
         if (e.getButton()==MouseButton.PRIMARY) {
             System.out.println("a");
             boolean a=false;
-            for(int i =0; i<map1.i; i++){
-                if(Math.sqrt((Math.pow(e.getX()-map1.map[i].x, 2))+(Math.pow( e.getY()-map1.map[i].y,2)))<=100){
+            for(int i =1; i<map1.i; i++){
+                if(Math.sqrt((Math.pow(e.getX()-map1.map[i].x, 2))+(Math.pow( e.getY()-map1.map[i].y,2)))<=200){
                     System.out.println("a1");
                     map1.s=i;
                     System.out.println(map1.s);
@@ -90,11 +90,11 @@ public class MindMapController implements Initializable {
         }
         else if (e.getButton()==MouseButton.SECONDARY) {
             System.out.println("b");
-            for(int i =0; i<map1.i; i++){
-                if(Math.sqrt((Math.pow(e.getX()-map1.map[i].x, 2))+(Math.pow( e.getY()-map1.map[i].y,2)))<=100){
+            for(int i =1; i<map1.i; i++){
+                if(Math.sqrt((Math.pow(e.getX()-map1.map[i].x, 2))+(Math.pow( e.getY()-map1.map[i].y,2)))<=200){
                     System.out.println("b2");
                     map1.map[map1.s].bac=i;
-                    addLine();
+                    draw();
                     break;
                 }
             }
@@ -103,6 +103,7 @@ public class MindMapController implements Initializable {
 
     public void addNode(MouseEvent e){
         map1.addNode(e.getX(),e.getY(), "enter text here");
+        map1.s=map1.i-1;
         draw();
     }
 
@@ -114,9 +115,21 @@ public class MindMapController implements Initializable {
         rootMap= new Group();
        // for(int i =0; i<map1.i; i++) {
          //   root.getChildren().add(map1.map[i].l); }
-        for(int i =0; i<map1.i; i++) {
-            //root.getChildren().add(map1.map[i].l);
-            root.getChildren().add(map1.map[i].r);}
+        for(int i =1; i<map1.i; i++) {
+            if(map1.map[i].bac != 0){
+                root.getChildren().add(new Line(map1.map[i].x,map1.map[i].y,map1.map[map1.map[i].bac].x,map1.map[map1.map[i].bac].y));
+            }
+        }
+        for(int i =1; i<map1.i; i++) {
+            ImageView r = new ImageView(map1.map[i].r);
+            r.setX(map1.map[i].x-200); r.setY(map1.map[i].y-150);//-r.getFitWidth()-r.getFitHeight()
+            root.getChildren().add(r);
+            TextField a = new TextField("enter text");
+            a.setLayoutX(map1.map[i].x);
+            a.setLayoutY(map1.map[i].y);
+            root.getChildren().add(a);
+        }
+
         window.show();
     }
 
