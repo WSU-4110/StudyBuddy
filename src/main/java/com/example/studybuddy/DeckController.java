@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 
-public class DeckController {
+public class DeckController extends SceneController{
     private Stage primaryStage;
     private Stage stage;
     private Scene scene;

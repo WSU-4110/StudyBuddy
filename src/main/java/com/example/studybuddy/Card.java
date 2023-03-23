@@ -1,6 +1,7 @@
 package com.example.studybuddy;
 
 import java.io.Serializable;
+import javafx.scene.paint.Color;
 public class Card implements Serializable {
     private String question;
     private String answer;

@@ -50,6 +50,7 @@ public class EditorController {
     public void saveCard(ActionEvent event) {
         this.question = questionTextArea.getText();
         this.answer = answerTextArea.getText();
+
         if (this.selectedCard == null) {
             System.out.println("New card");
             Deck revisedDeck = this.deck;

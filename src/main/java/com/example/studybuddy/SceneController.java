@@ -15,19 +15,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+public class SceneController implements Initializable {
     @FXML private Button mindmapsButton;
 
     @FXML private Button flashcardsButton;
 
     @FXML private AnchorPane rootPane;
-
+    Parent parent;
+    Scene scene;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-    public void switchToMindmaps(ActionEvent event){
+    public void switchScene(ActionEvent event, String fxmlFilename) {
         try {
-            Parent mindmapsParent = FXMLLoader.load(getClass().getResource("mindmapsScene.fxml"));
+            Parent mindmapsParent = FXMLLoader.load(getClass().getResource(fxmlFilename));
             Scene mindmapsScene = new Scene(mindmapsParent);
 
             // Get the Stage information
@@ -39,18 +40,13 @@ public class HomeController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    public void switchToMindmaps(ActionEvent event){
+        switchScene(event, "mindmapsScene.fxml");
+    }
     public void switchToFlashcards(ActionEvent event){
-        try {
-            Parent mindmapsParent = FXMLLoader.load(getClass().getResource("flashcardsScene.fxml"));
-            Scene mindmapsScene = new Scene(mindmapsParent);
-
-            // Get the Stage information
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-            window.setScene(mindmapsScene);
-            window.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        switchScene(event, "flashcardsScene.fxml");
+    }
+    public void returnHome(ActionEvent event){
+        switchScene(event, "homepage.fxml");
     }
 }

@@ -26,6 +26,11 @@
       </Label>
       <ButtonBar layoutX="486.0" layoutY="13.0" prefHeight="64.0" prefWidth="640.0" AnchorPane.rightAnchor="90.0">
          <buttons>
+            <Button fx:id="home" mnemonicParsing="false" onAction="#returnHome" prefHeight="43.0" prefWidth="132.0" text="Home">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
             <Button fx:id="addDeck" mnemonicParsing="false" onAction="#addDeck" prefHeight="36.0" prefWidth="175.0" text="Add deck">
                <font>
                   <Font size="20.0" />
@@ -45,5 +50,6 @@
                </font></Button>
          </buttons>
       </ButtonBar>
+      <Button fx:id="refresh" layoutX="153.0" layoutY="148.0" mnemonicParsing="false" onAction="#initialize" text="Refresh" />
    </children>
 </AnchorPane>

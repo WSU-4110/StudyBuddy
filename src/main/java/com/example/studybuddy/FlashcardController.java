@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class FlashcardController {
+public class FlashcardController extends SceneController{
     private Stage primaryStage;
     private Stage stage;
     private Scene scene;
