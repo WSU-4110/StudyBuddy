@@ -28,7 +28,6 @@ public class PlayerController extends SceneController {
     private Deck deck;
     private DataHandlingCard ds = DataHandlingCard.getInstance();
 
-    private Card color;
     @FXML
     Label playerTitle;
     @FXML
@@ -37,8 +36,6 @@ public class PlayerController extends SceneController {
     Label questionLabel;
     @FXML
     Button toggleAnswerBtn;
-    @FXML
-    ColorPicker UColor;
 
     @FXML
     Slider FontS;
@@ -197,15 +194,6 @@ public class PlayerController extends SceneController {
         showAnswer = !showAnswer;
         toggleAnswerBtn.setText("Show Answer");
     }
-
-
-    public void changeColor(ActionEvent event)
-    {
-        Color usColor = UColor.getValue();
-        questionLabel.setBackground(new Background(new BackgroundFill(usColor, null,null)));
-        UColor.setValue(usColor);
-    }
-
 
     public void FontC(MouseEvent event)
     {

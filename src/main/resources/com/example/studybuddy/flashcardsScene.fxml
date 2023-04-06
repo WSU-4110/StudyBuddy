@@ -50,6 +50,5 @@
                </font></Button>
          </buttons>
       </ButtonBar>
-      <Button fx:id="refresh" layoutX="153.0" layoutY="148.0" mnemonicParsing="false" onAction="#initialize" text="Refresh"/>
    </children>
 </AnchorPane>
