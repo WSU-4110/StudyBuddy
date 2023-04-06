@@ -47,10 +47,7 @@
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                        <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="148.0" text="Next (WIP)">
-                           <font>
-                              <Font size="20.0" />
-                           </font></Button>
+
                      </buttons>
                   </ButtonBar>
                   <Slider fx:id="FontS" layoutX="172.0" layoutY="548.0" max="50.0" min="20.0" onMouseDragged="#FontC" onMouseReleased="#FontC" showTickMarks="true" />

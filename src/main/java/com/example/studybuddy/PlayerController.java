@@ -132,6 +132,7 @@ public class PlayerController extends SceneController {
                 cardList.getItems().setAll(observableList);
                 cardList.setPlaceholder(new Text("No Cards in Deck"));
                 this.questionLabel.setText("No card Selected");
+
                 attachEventHandlers();
 
             } else {
