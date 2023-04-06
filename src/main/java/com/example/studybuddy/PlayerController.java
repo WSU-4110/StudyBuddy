@@ -134,6 +134,7 @@ public class PlayerController extends SceneController {
                 this.questionLabel.setText("No card Selected");
 
                 attachEventHandlers();
+                questionLabel.setBackground(new Background(new BackgroundFill(null, null,null)));
 
             } else {
                 cardList.setPlaceholder(new Label("No cards found"));
