@@ -22,6 +22,7 @@ public class FlashcardController extends SceneController{
     private DataHandlingCard ds = DataHandlingCard.getInstance();
     private ArrayList<Deck> decks;
     private Deck selectedDeck;
+
     @FXML
     private Label label;
     @FXML
@@ -42,7 +43,6 @@ public class FlashcardController extends SceneController{
             System.out.println("No decks found");
             deckList.setPlaceholder(new Label("Add a deck to start learning"));
         }
-
         attachEventHandlers();
     }
 

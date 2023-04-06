@@ -30,7 +30,6 @@ public class SceneController implements Initializable {
         try {
             Parent mindmapsParent = FXMLLoader.load(getClass().getResource(fxmlFilename));
             Scene mindmapsScene = new Scene(mindmapsParent);
-
             // Get the Stage information
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
