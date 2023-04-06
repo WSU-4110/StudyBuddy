@@ -6,8 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class EditorController {
     private Deck deck;
     private String question;
     private String answer;
+    private Color color;
     private Card selectedCard;
     private DataHandlingCard ds = DataHandlingCard.getInstance();
 
@@ -27,6 +30,8 @@ public class EditorController {
     TextArea answerTextArea;
     @FXML
     Label mainLabel;
+    @FXML
+    ColorPicker UColor;
 
     public void backToDeck(ActionEvent event) {
     }
@@ -50,11 +55,12 @@ public class EditorController {
     public void saveCard(ActionEvent event) {
         this.question = questionTextArea.getText();
         this.answer = answerTextArea.getText();
+        this.color = UColor.getValue();
 
         if (this.selectedCard == null) {
             System.out.println("New card");
             Deck revisedDeck = this.deck;
-            revisedDeck.addCard(new Card(this.question, this.answer));
+            revisedDeck.addCard(new Card(this.question, this.answer, this.color));
             System.out.println("revised deck: " + revisedDeck.toString());
             ArrayList<Deck> tempDecks = this.ds.getDecks();
             for (Deck d : tempDecks) {
@@ -84,7 +90,7 @@ public class EditorController {
             System.out.println("Edit card");
             ArrayList<Card> cards = this.deck.getCards();
             int indexOfCard = cards.indexOf(selectedCard);
-            cards.set(indexOfCard, new Card(this.question, this.answer));
+            cards.set(indexOfCard, new Card(this.question, this.answer, this.color));
             this.deck.setCards(cards);
             Deck revisedDeck = this.deck;
             ArrayList<Deck> tempDecks = this.ds.getDecks();
@@ -117,6 +123,7 @@ public class EditorController {
         this.selectedCard = selectedCard;
         this.question = selectedCard.getQuestion();
         this.answer = selectedCard.getAnswer();
+        this.color = selectedCard.getColor();
         questionTextArea.setText(selectedCard.getQuestion());
         answerTextArea.setText(selectedCard.getAnswer());
         mainLabel.setText("Edit Card");
@@ -126,6 +133,7 @@ public class EditorController {
         this.deck = deck;
         this.question = "";
         this.answer = "";
+        this.color = null;
         this.selectedCard = null;
         questionTextArea.setText(this.question);
         answerTextArea.setText(this.answer);

@@ -175,6 +175,7 @@ public class PlayerController extends SceneController {
                     .filter(card -> card.getQuestion().equals(selectedQuestion)).findAny().orElse(null);
             this.selectedCard = selectedCard;
             questionLabel.setText(selectedCard.getQuestion());
+            questionLabel.setBackground(new Background(new BackgroundFill(selectedCard.getColor(), null,null)));
             this.toggleAnswer();
         });
     }

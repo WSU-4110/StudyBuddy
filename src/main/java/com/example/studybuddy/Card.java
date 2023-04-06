@@ -5,14 +5,16 @@ import javafx.scene.paint.Color;
 public class Card implements Serializable {
     private String question;
     private String answer;
+    private SerializableColor color;
 
     public Card() {
-        this(null, null);
+        this(null, null, null);
     }
 
-    public Card(String question, String answer) {
+    public Card(String question, String answer, Color color) {
         this.question = question;
         this.answer = answer;
+        this.color = new SerializableColor(color);
     }
 
     public String getQuestion() {
@@ -29,6 +31,14 @@ public class Card implements Serializable {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public Color getColor() {
+        return color.getFXColor();
+    }
+
+    public void setColor(Color color) {
+        this.color = new SerializableColor(color);
     }
 
     @Override
