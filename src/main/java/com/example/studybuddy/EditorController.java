@@ -11,8 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class EditorController {
     private Stage stage;
@@ -117,7 +120,6 @@ public class EditorController {
             }
         }
     }
-
     public void initEditor(Deck deck, Card selectedCard) {
         this.deck = deck;
         this.selectedCard = selectedCard;
@@ -129,14 +131,4 @@ public class EditorController {
         mainLabel.setText("Edit Card");
     }
 
-    public void initEditor(Deck deck) {
-        this.deck = deck;
-        this.question = "";
-        this.answer = "";
-        this.color = null;
-        this.selectedCard = null;
-        questionTextArea.setText(this.question);
-        answerTextArea.setText(this.answer);
-        mainLabel.setText("Create New Card");
-    }
 }

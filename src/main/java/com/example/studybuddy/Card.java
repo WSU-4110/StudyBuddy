@@ -2,12 +2,17 @@ package com.example.studybuddy;
 
 import java.io.Serializable;
 import javafx.scene.paint.Color;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 public class Card implements Serializable {
     private String question;
     private String answer;
     private SerializableColor color;
 
-    public Card() {
+    public Card(String s, String juneau) {
         this(null, null, null);
     }
 
@@ -16,6 +21,7 @@ public class Card implements Serializable {
         this.answer = answer;
         this.color = new SerializableColor(color);
     }
+
 
     public String getQuestion() {
         return question;
@@ -48,5 +54,4 @@ public class Card implements Serializable {
                 ", answer='" + answer + '\'' +
                 '}';
     }
-
 }

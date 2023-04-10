@@ -89,7 +89,7 @@ public class PlayerController extends SceneController {
         try {
             root = loader.load();
             EditorController controller = loader.getController();
-            controller.initEditor(deck);
+            controller.initEditor(deck, selectedCard);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

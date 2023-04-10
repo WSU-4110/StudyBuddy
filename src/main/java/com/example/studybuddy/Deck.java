@@ -1,7 +1,12 @@
 package com.example.studybuddy;
 
+import org.junit.Test;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class Deck implements Serializable {
     private String title;
