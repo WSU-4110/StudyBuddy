@@ -11,7 +11,8 @@ public class Node {
     public double x,y;
     public int bac;
     public Line l;
-    public static Image r=new Image("C:\\Users\\Tom Charnley\\rect10.png");
+    public static String s= "file:./src/main/resources/rect10.png";
+    public static Image r=new Image(s);
     public Button B = new Button();
     public String text;
 
@@ -20,6 +21,14 @@ public class Node {
     }
     public Node (){
     }
+
+    public static String setImage(String a){
+        String q="file:./src/main/resources/"+a+".png";
+        s=q;
+        //r= new Image(q);
+        return s;
+    }
+
     public String toString(){
         return (x+" "+y+" "+l.getStartX()+" "+l.getStartY()+" "+l.getEndX()+" "+l.getEndY()+" "+bac+" "+text+"\n");
     }
