@@ -135,6 +135,7 @@ public class PlayerController extends SceneController {
 
                 attachEventHandlers();
                 questionLabel.setBackground(new Background(new BackgroundFill(null, null,null)));
+                questionLabel.setTextFill(null);
 
             } else {
                 cardList.setPlaceholder(new Label("No cards found"));
@@ -174,7 +175,9 @@ public class PlayerController extends SceneController {
                     .filter(card -> card.getQuestion().equals(selectedQuestion)).findAny().orElse(null);
             this.selectedCard = selectedCard;
             questionLabel.setText(selectedCard.getQuestion());
+            questionLabel.setTextFill(selectedCard.getTextColor());
             questionLabel.setBackground(new Background(new BackgroundFill(selectedCard.getColor(), null,null)));
+
             this.toggleAnswer();
         });
     }
