@@ -38,6 +38,7 @@ public class EditorController {
     @FXML
     ColorPicker UTextColor;
 
+
     public void backToDeck(ActionEvent event) {
     }
 
@@ -131,6 +132,8 @@ public class EditorController {
         this.answer = selectedCard.getAnswer();
         this.color = selectedCard.getColor();
         this.textColor = selectedCard.getTextColor();
+        this.UColor.setValue(color);
+        this.UTextColor.setValue(textColor);
         colorPreview(color, textColor);
         questionTextArea.setText(selectedCard.getQuestion());
         answerTextArea.setText(selectedCard.getAnswer());
