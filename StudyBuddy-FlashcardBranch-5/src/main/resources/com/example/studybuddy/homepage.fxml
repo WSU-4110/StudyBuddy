@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane prefHeight="800" prefWidth="1200" style="-fx-background-color: #F7BF4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studybuddy.SceneController">
+
+    <VBox alignment="CENTER" layoutX="480" layoutY="200" spacing="50" />
+   <ImageView fitHeight="800.0" fitWidth="1200.0" layoutX="200.0" layoutY="-158.0" pickOnBounds="true" preserveRatio="true">
+    <image>
+        <Image url="@loadingScene.png" />
+    </image>
+</ImageView>
+     <Button fx:id="mindmapsButton" layoutX="427.0" layoutY="424.0" onAction="#switchToMindmaps" style="-fx-background-color: #F7BF4F; -fx-text-fill: #000; -fx-font-size: 60px; -fx-font-weight: bold;" text="Mindmaps" />
+     <Button fx:id="flashcardsButton" layoutX="423.0" layoutY="579.0" onAction="#switchToFlashcards" style="-fx-background-color: #F7BF4F; -fx-text-fill: #000; -fx-font-size: 60px; -fx-font-weight: bold;" text="Flashcards" />
+</Pane>

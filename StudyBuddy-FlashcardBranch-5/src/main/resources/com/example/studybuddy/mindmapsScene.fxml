@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #F7BF0F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studybuddy.MindMapController">
+   <children>
+      <Button layoutX="26.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchToHome" style="-fx-background-color: #F7BF8F;" text="Home" />
+      <Text layoutX="420.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mindmaps">
+         <font>
+            <Font size="87.0" />
+         </font>
+      </Text>
+      <Button layoutX="318.0" layoutY="327.0" mnemonicParsing="false" onAction="#createMap" prefHeight="161.0" prefWidth="571.0" style="-fx-background-color: #F7BF5F; -fx-font-size: 52px;" text="Create New Mindmap" />
+   </children>
+</Pane>

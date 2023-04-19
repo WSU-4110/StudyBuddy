@@ -1,0 +1,27 @@
+https://stackoverflow.com/questions/7358775/java-gui-frameworks-what-to-choose-swing-swt-awt-swingx-jgoodies-javafx
+https://www.kodeco.com/7705231-creating-a-mind-map-ui-in-swiftui
+https://www.mindmup.com/
+https://github.com/topics/mind-mapping
+https://github.com/JagarYousef/Mindo
+
+Language we will use: javafx(for desktop application supports different OS)
+We will be working on homepage first about two weeks to learn about javafx
+
+Plan:
+strech 1:
+Create homescreen as practice.
+
+strech 2:
+split into groups and work on separate componants.
+
+strech 3:
+debug.
+
+strech 4: 
+testing.
+
+
+**HOMEPAGE SHOULD CONTAIN**
+Mindmap
+Flashcard
+Setting(will be the last one to do)
