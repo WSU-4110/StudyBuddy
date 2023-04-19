@@ -59,13 +59,13 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </ButtonBar>
-                  <ColorPicker fx:id="UColor" layoutX="177.0" layoutY="554.0" />
+                  <ColorPicker fx:id="UColor" layoutX="177.0" layoutY="554.0" onAction="#cardColorPreview" />
                   <Label layoutX="80.0" layoutY="554.0" text="Card Color">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <ColorPicker fx:id="UTextColor" layoutX="177.0" layoutY="587.0">
+                  <ColorPicker fx:id="UTextColor" layoutX="177.0" layoutY="587.0" onAction="#textColorPreview">
                      <value>
                         <Color />
                      </value>

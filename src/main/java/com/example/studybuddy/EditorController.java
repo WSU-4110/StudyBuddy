@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -129,6 +131,7 @@ public class EditorController {
         this.answer = selectedCard.getAnswer();
         this.color = selectedCard.getColor();
         this.textColor = selectedCard.getTextColor();
+        colorPreview(color, textColor);
         questionTextArea.setText(selectedCard.getQuestion());
         answerTextArea.setText(selectedCard.getAnswer());
         mainLabel.setText("Edit Card");
@@ -138,11 +141,33 @@ public class EditorController {
         this.deck = deck;
         this.question = "";
         this.answer = "";
-        this.color = null;
-        this.textColor = null;
+        this.color = Color.WHITE;
+        this.textColor = Color.BLACK;
         this.selectedCard = null;
         questionTextArea.setText(this.question);
         answerTextArea.setText(this.answer);
         mainLabel.setText("Create New Card");
+    }
+    public void cardColorPreview(ActionEvent e) {
+        this.color = UColor.getValue();
+        colorPreview(color, textColor);
+    }
+
+    public void textColorPreview(ActionEvent e) {
+        this.textColor = UTextColor.getValue();
+        colorPreview(color, textColor);
+    }
+
+    public void colorPreview(Color bg,Color text) {
+        String cardHex = String.format( "#%02X%02X%02X",
+                (int)( bg.getRed() * 255 ),
+                (int)( bg.getGreen() * 255 ),
+                (int)( bg.getBlue() * 255 ) );
+        String textHex = String.format( "#%02X%02X%02X",
+                (int)( text.getRed() * 255 ),
+                (int)( text.getGreen() * 255 ),
+                (int)( text.getBlue() * 255 ) );
+        questionTextArea.setStyle("-fx-control-inner-background: " + cardHex + "; -fx-text-fill: " + textHex + ";");
+        answerTextArea.setStyle("-fx-control-inner-background: " + cardHex + "; -fx-text-fill: " + textHex + ";");
     }
 }
