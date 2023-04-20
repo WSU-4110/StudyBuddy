@@ -195,7 +195,7 @@ public class MindMapController implements Initializable {
             } catch (Exception e) {
 
                 System.out.println("Error Deserializing decks");
-                e.printStackTrace();
+                e.printStackTrace();    
             }
         }
     }
