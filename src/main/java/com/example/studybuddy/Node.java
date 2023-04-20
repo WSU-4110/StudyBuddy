@@ -11,15 +11,21 @@ public class Node {
     public double x,y;
     public int bac;
     public Line l;
+    public static Image r=new Image("file:./src/main/resources/rect10.png");
     public static String s= "file:./src/main/resources/rect10.png";
-    public static Image r=new Image(s);
     public Button B = new Button();
+    public TextField a;
     public String text;
 
     public Node(double xi, double yi, String s){
         x=xi; y=yi; text=s; //r.setX(x-r.getFitWidth()); r.setY(y-r.getFitHeight()); t.setText(s);
     }
     public Node (){
+    }
+    public void setText(){
+        a = new TextField(text);
+        a.setLayoutX(x);
+        a.setLayoutY(y);
     }
 
     public static String setImage(String a){

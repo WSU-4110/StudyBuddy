@@ -1,6 +1,8 @@
 package com.example.studybuddy;
 
-public class Map{
+import java.io.Serializable;
+
+public class Map implements Serializable {
 
     static Node map[]=new Node[100];
 
@@ -44,10 +46,11 @@ public class Map{
     public static int setSelect(int a){
         s=a;
         return a;
+
     }
     public static boolean undoNode(){
-        s-=1;
-        if(s>=0){
+        if(i>0){
+            i-=1;
             return true;
         }
         return false;
