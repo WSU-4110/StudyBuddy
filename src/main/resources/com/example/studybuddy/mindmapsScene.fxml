@@ -7,12 +7,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studybuddy.MindMapController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToHome" text="Go To Home" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToHome" text="Home" />
       <Text layoutX="544.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mindmaps">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Button layoutX="110.0" layoutY="14.0" mnemonicParsing="false" onAction="#createMap" text="Create New Mindmap" />
+      <Button layoutX="76.0" layoutY="14.0" mnemonicParsing="false" onAction="#createMap" text="Create New Mindmap" />
    </children>
 </Pane>

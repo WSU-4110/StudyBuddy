@@ -12,6 +12,7 @@ public class Node {
     public int bac;
     public Line l;
     public static Image r=new Image("file:./src/main/resources/rect10.png");
+    public static String s= "file:./src/main/resources/rect10.png";
     public Button B = new Button();
     public TextField a;
     public String text;
@@ -26,6 +27,14 @@ public class Node {
         a.setLayoutX(x);
         a.setLayoutY(y);
     }
+
+    public static String setImage(String a){
+        String q="file:./src/main/resources/"+a+".png";
+        s=q;
+        //r= new Image(q);
+        return s;
+    }
+
     public String toString(){
         return (x+" "+y+" "+l.getStartX()+" "+l.getStartY()+" "+l.getEndX()+" "+l.getEndY()+" "+bac+" "+text+"\n");
     }
