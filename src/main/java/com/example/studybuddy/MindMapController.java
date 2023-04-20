@@ -23,7 +23,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
-public class MindMapController implements Initializable {
+public class MindMapController implements Initializable, Serializable {
     @FXML
     private Button mindmapsButton;
     @FXML
@@ -48,7 +48,7 @@ public class MindMapController implements Initializable {
     }
 
     public void createMap(ActionEvent event) {
-        mapf = new Scene(root, 1920, 1080);
+        mapf = new Scene(root, 1200, 800);
         window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(mapf);
         draw();
@@ -95,13 +95,14 @@ public class MindMapController implements Initializable {
         Button b1 = new Button();
         Button b2 = new Button();
         Button b3 = new Button();
-        b.setText("back");
-        b1.setLayoutY(30);
-        b1.setText("save");
-        b2.setLayoutY(60);
-        b2.setText("undo");
-        b3.setLayoutY(90);
-        b3.setText("load");
+        b.setLayoutX(10);
+        b.setText("Back");
+        b1.setLayoutX(60);
+        b1.setText("Save");
+        b2.setLayoutX(110);
+        b2.setText("Undo");
+        b3.setLayoutX(160);
+        b3.setText("Load");
         EventHandler<ActionEvent> save = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 saveMaps();
@@ -195,7 +196,7 @@ public class MindMapController implements Initializable {
             } catch (Exception e) {
 
                 System.out.println("Error Deserializing decks");
-                e.printStackTrace();
+                e.printStackTrace();    
             }
         }
     }
