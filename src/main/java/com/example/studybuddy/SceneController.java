@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SceneController implements Initializable {
+public class SceneController {
     @FXML private Button mindmapsButton;
 
     @FXML private Button flashcardsButton;
@@ -23,14 +23,11 @@ public class SceneController implements Initializable {
     @FXML private AnchorPane rootPane;
     Parent parent;
     Scene scene;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
+
     public void switchScene(ActionEvent event, String fxmlFilename) {
         try {
             Parent mindmapsParent = FXMLLoader.load(getClass().getResource(fxmlFilename));
             Scene mindmapsScene = new Scene(mindmapsParent);
-
             // Get the Stage information
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 

@@ -1,6 +1,7 @@
 package com.example.studybuddy;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,129 +10,193 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
-
-public class MindMapController implements Initializable {
+public class MindMapController implements Initializable, Serializable {
     @FXML
     private Button mindmapsButton;
-
     @FXML
     private Button flashcardsButton;
-
     @FXML
     private Button createmindmap;
-
     @FXML
     private AnchorPane rootPane;
-
     public Scene mindmapsScene;
     public Stage window;
+    public Group cards = new Group();
+    public Map map1 = new Map();
 
     public Group rootMap = new Group();
-    public Group cards = new Group();
-    public Map map1;
-    Group root= new Group();
 
+    Group root = new Group();
+    FileChooser f = new FileChooser();
     private Scene mapf;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    public void switchToMindmaps(ActionEvent event){
-        try {
-            Parent mindmapsParent = FXMLLoader.load(getClass().getResource("mindmapsScene.fxml"));
-            mindmapsScene = new Scene(mindmapsParent);
-
-            // Get the Stage information
-            window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-            window.setScene(mindmapsScene);
-            window.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void createMap(ActionEvent event){
-        map1= new Map();
-        mapf = new Scene(root,1000,1000);
-        window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        root.getChildren().add(map1.map[0].r);
+    public void createMap(ActionEvent event) {
+        mapf = new Scene(root, 1200, 800);
+        window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(mapf);
-        window.show();
-
-        mapf.setOnMouseClicked(e-> mouse(e));
-        //System.out.println("new node object assigned to nodeTest");
+        draw();
+        mapf.setOnMouseClicked(e -> {
+            mouse(e);
+        });
     }
 
-    private void mouse(MouseEvent e){
-        if (e.getButton()==MouseButton.PRIMARY) {
-            System.out.println("a");
-            boolean a=false;
-            for(int i =0; i<map1.i; i++){
-                if(Math.sqrt((Math.pow(e.getX()-map1.map[i].x, 2))+(Math.pow( e.getY()-map1.map[i].y,2)))<=100){
-                    System.out.println("a1");
-                    map1.s=i;
+    private void mouse(MouseEvent e) {
+        if (map1.i > 1) {
+            for (int i = 1; i < map1.i; i++) {
+                map1.map[i].text = map1.map[i].a.getText();
+            }
+        }
+        if (e.getButton() == MouseButton.PRIMARY) {
+            boolean a = false;
+            for (int i = 1; i < map1.i; i++) {
+                if (Math.sqrt((Math.pow(e.getX() - map1.map[i].x, 2)) + (Math.pow(e.getY() - map1.map[i].y, 2))) <= 200) {
+                    map1.s = i;
                     System.out.println(map1.s);
-                    a=true;
-                    break;
+                    a = true;
                 }
             }
-            if (a==false) addNode(e);
-        }
-        else if (e.getButton()==MouseButton.SECONDARY) {
-            System.out.println("b");
-            for(int i =0; i<map1.i; i++){
-                if(Math.sqrt((Math.pow(e.getX()-map1.map[i].x, 2))+(Math.pow( e.getY()-map1.map[i].y,2)))<=100){
-                    System.out.println("b2");
-                    map1.map[map1.s].bac=i;
-                    addLine();
-                    break;
+            if (a == false) addNode(e);
+        } else if (e.getButton() == MouseButton.SECONDARY) {
+            for (int i = 1; i < map1.i; i++) {
+                if (Math.sqrt((Math.pow(e.getX() - map1.map[i].x, 2)) + (Math.pow(e.getY() - map1.map[i].y, 2))) <= 200) {
+                    map1.map[map1.s].bac = i;
+                    draw();
                 }
             }
         }
     }
 
-    public void addNode(MouseEvent e){
-        map1.addNode(e.getX(),e.getY(), "enter text here");
+    public void addNode(MouseEvent e) {
+        map1.addNode(e.getX(), e.getY(), "enter text here");
+        map1.s = map1.i - 1;
         draw();
     }
 
-    public void addLine(){
-
-    }
-
-    protected void draw(){
-        rootMap= new Group();
-       // for(int i =0; i<map1.i; i++) {
-         //   root.getChildren().add(map1.map[i].l); }
-        for(int i =0; i<map1.i; i++) {
-            //root.getChildren().add(map1.map[i].l);
-            root.getChildren().add(map1.map[i].r);}
+    protected void draw() {
+        root.getChildren().clear();
+        Button b = new Button();
+        Button b1 = new Button();
+        Button b2 = new Button();
+        Button b3 = new Button();
+        b.setLayoutX(10);
+        b.setText("Back");
+        b1.setLayoutX(60);
+        b1.setText("Save");
+        b2.setLayoutX(110);
+        b2.setText("Undo");
+        b3.setLayoutX(160);
+        b3.setText("Load");
+        EventHandler<ActionEvent> save = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                saveMaps();
+            }
+        };
+        EventHandler<ActionEvent> goback = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                back();
+            }
+        };
+        EventHandler<ActionEvent> undo = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                map1.undoNode();
+                draw();
+            }
+        };
+        EventHandler<ActionEvent> load = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                loadMap();
+            }
+        };
+        b1.setOnAction(save);
+        b.setOnAction(goback);
+        b2.setOnAction(undo);
+        b3.setOnAction(load);
+        root.getChildren().addAll(b, b1, b2, b3);
+        for (int i = 1; i < map1.i; i++) {
+            if (map1.map[i].bac > map1.i) {
+                map1.map[i].bac = 0;
+            }
+        }
+        for (int i = 1; i < map1.i; i++) {
+            if (map1.map[i].bac != 0) {
+                root.getChildren().add(new Line(map1.map[i].x, map1.map[i].y, map1.map[map1.map[i].bac].x, map1.map[map1.map[i].bac].y));
+            }
+        }
+        for (int i = 1; i < map1.i; i++) {
+            ImageView r = new ImageView(map1.map[i].r);
+            r.setX(map1.map[i].x - 200);
+            r.setY(map1.map[i].y - 150);//-r.getFitWidth()-r.getFitHeight()
+            r.setScaleX(.5);
+            r.setScaleY(.5);
+            root.getChildren().add(r);
+            map1.map[i].setText();
+            root.getChildren().add(map1.map[i].a);
+        }
         window.show();
     }
 
-    public void switchToFlashcards(ActionEvent event){
-        try {
-            Parent mindmapsParent = FXMLLoader.load(getClass().getResource("flashcardsScene.fxml"));
-            mindmapsScene = new Scene(mindmapsParent);
+        public void switchToHome (ActionEvent event){
+            try {
+                Parent mindmapsParent = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+                mindmapsScene = new Scene(mindmapsParent);
 
-            // Get the Stage information
-            window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                // Get the Stage information
+                window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            window.setScene(mindmapsScene);
-            window.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+                window.setScene(mindmapsScene);
+                window.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        public void back () {
+            try {
+                map1 = new Map();
+                Parent mindmapsParent = FXMLLoader.load(getClass().getResource("mindmapsScene.fxml"));
+                mindmapsScene = new Scene(mindmapsParent);
+                window.setScene(mindmapsScene);
+                window.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        public void saveMaps () {
+            try {
+                ObjectOutputStream os = new ObjectOutputStream(Files.newOutputStream(Paths.get(map1.map[1].text)));
+                os.writeObject(map1);
+            } catch (Exception e) {
+                System.out.println("Error Serializing decks");
+                e.printStackTrace();
+            }
+        }
+        public void loadMap () {
+            try {
+                f.setInitialDirectory(new File("src/"));
+                File a = f.showOpenDialog(new Stage());
+                ObjectInputStream is = new ObjectInputStream(Files.newInputStream(Paths.get(a.getName())));
+                map1 = (Map) is.readObject();
+                draw();
+            } catch (Exception e) {
+
+                System.out.println("Error Deserializing decks");
+                e.printStackTrace();    
+            }
         }
     }
-}

@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -21,6 +23,7 @@ public class EditorController {
     private String question;
     private String answer;
     private Color color;
+    private Color textColor;
     private Card selectedCard;
     private DataHandlingCard ds = DataHandlingCard.getInstance();
 
@@ -32,6 +35,9 @@ public class EditorController {
     Label mainLabel;
     @FXML
     ColorPicker UColor;
+    @FXML
+    ColorPicker UTextColor;
+
 
     public void backToDeck(ActionEvent event) {
     }
@@ -56,11 +62,12 @@ public class EditorController {
         this.question = questionTextArea.getText();
         this.answer = answerTextArea.getText();
         this.color = UColor.getValue();
+        this.textColor = UTextColor.getValue();
 
         if (this.selectedCard == null) {
             System.out.println("New card");
             Deck revisedDeck = this.deck;
-            revisedDeck.addCard(new Card(this.question, this.answer, this.color));
+            revisedDeck.addCard(new Card(this.question, this.answer, this.color, this.textColor));
             System.out.println("revised deck: " + revisedDeck.toString());
             ArrayList<Deck> tempDecks = this.ds.getDecks();
             for (Deck d : tempDecks) {
@@ -90,7 +97,7 @@ public class EditorController {
             System.out.println("Edit card");
             ArrayList<Card> cards = this.deck.getCards();
             int indexOfCard = cards.indexOf(selectedCard);
-            cards.set(indexOfCard, new Card(this.question, this.answer, this.color));
+            cards.set(indexOfCard, new Card(this.question, this.answer, this.color, this.textColor));
             this.deck.setCards(cards);
             Deck revisedDeck = this.deck;
             ArrayList<Deck> tempDecks = this.ds.getDecks();
@@ -124,6 +131,10 @@ public class EditorController {
         this.question = selectedCard.getQuestion();
         this.answer = selectedCard.getAnswer();
         this.color = selectedCard.getColor();
+        this.textColor = selectedCard.getTextColor();
+        this.UColor.setValue(color);
+        this.UTextColor.setValue(textColor);
+        colorPreview(color, textColor);
         questionTextArea.setText(selectedCard.getQuestion());
         answerTextArea.setText(selectedCard.getAnswer());
         mainLabel.setText("Edit Card");
@@ -133,10 +144,33 @@ public class EditorController {
         this.deck = deck;
         this.question = "";
         this.answer = "";
-        this.color = null;
+        this.color = Color.WHITE;
+        this.textColor = Color.BLACK;
         this.selectedCard = null;
         questionTextArea.setText(this.question);
         answerTextArea.setText(this.answer);
         mainLabel.setText("Create New Card");
+    }
+    public void cardColorPreview(ActionEvent e) {
+        this.color = UColor.getValue();
+        colorPreview(color, textColor);
+    }
+
+    public void textColorPreview(ActionEvent e) {
+        this.textColor = UTextColor.getValue();
+        colorPreview(color, textColor);
+    }
+
+    public void colorPreview(Color bg,Color text) {
+        String cardHex = String.format( "#%02X%02X%02X",
+                (int)( bg.getRed() * 255 ),
+                (int)( bg.getGreen() * 255 ),
+                (int)( bg.getBlue() * 255 ) );
+        String textHex = String.format( "#%02X%02X%02X",
+                (int)( text.getRed() * 255 ),
+                (int)( text.getGreen() * 255 ),
+                (int)( text.getBlue() * 255 ) );
+        questionTextArea.setStyle("-fx-control-inner-background: " + cardHex + "; -fx-text-fill: " + textHex + ";");
+        answerTextArea.setStyle("-fx-control-inner-background: " + cardHex + "; -fx-text-fill: " + textHex + ";");
     }
 }

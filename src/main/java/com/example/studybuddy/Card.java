@@ -6,15 +6,17 @@ public class Card implements Serializable {
     private String question;
     private String answer;
     private SerializableColor color;
+    private SerializableColor textColor;
 
     public Card() {
-        this(null, null, null);
+        this(null, null, null, null);
     }
 
-    public Card(String question, String answer, Color color) {
+    public Card(String question, String answer, Color color, Color textColor) {
         this.question = question;
         this.answer = answer;
         this.color = new SerializableColor(color);
+        this.textColor = new SerializableColor(textColor);
     }
 
     public String getQuestion() {
@@ -39,6 +41,14 @@ public class Card implements Serializable {
 
     public void setColor(Color color) {
         this.color = new SerializableColor(color);
+    }
+
+    public Color getTextColor() {
+        return textColor.getFXColor();
+    }
+
+    public void setTextColor(Color textColor) {
+        this.textColor = new SerializableColor(textColor);
     }
 
     @Override
