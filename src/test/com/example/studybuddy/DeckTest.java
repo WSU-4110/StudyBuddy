@@ -13,7 +13,7 @@ class DeckTest {
         deck = new Deck("Test Deck");
     }
     @Test
-    void isEmpty() {
+     void isEmpty() {
         Deck deck = new Deck("MyDeck");
         assertTrue(deck.isEmpty());
         Card card = new Card("Question", "Answer", Color.BLUE);
