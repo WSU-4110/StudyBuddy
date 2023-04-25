@@ -9,19 +9,19 @@ import static org.junit.Assert.*;
 public class CardTest {
     Card card;
     @Before
-    void setUp() {
+    public void setUp() {
         card = new Card("Question","Answer", Color.RED, Color.BLACK);
     }
 
     @Test
-    void testGetQuestion() {
+    public void testGetQuestion() {
         String actual = card.getQuestion();
         String expected = "Question";
         assertEquals(expected, actual);
     }
 
     @Test
-    void testSetQuestion() {
+    public void testSetQuestion() {
         card.setQuestion("SetQuestion");
         String actual = card.getQuestion();
         String expected = "SetQuestion";
@@ -29,14 +29,14 @@ public class CardTest {
     }
 
     @Test
-    void testGetAnswer() {
+   public void testGetAnswer() {
         String actual = card.getAnswer();
         String expected = "Answer";
         assertEquals(expected, actual);
     }
 
     @Test
-    void testSetAnswer() {
+    public void testSetAnswer() {
         card.setAnswer("SetAnswer");
         String actual = card.getAnswer();
         String expected = "SetAnswer";
@@ -44,14 +44,14 @@ public class CardTest {
     }
 
     @Test
-    void testGetColor() {
+    public void testGetColor() {
         Color actual = card.getColor();
         Color expected = Color.RED;
         assertEquals(expected, actual);
     }
 
     @Test
-    void testSetColor() {
+    public void testSetColor() {
         card.setColor(Color.BLUE);
         Color actual = card.getColor();
         Color expected = Color.BLUE;
