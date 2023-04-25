@@ -11,5 +11,5 @@ We wanted to create a project that can improve students life and help them save 
 # Usage
 The usage of this application is helping students and others doing similiar activities to create flashcards and mindmap with alot of freedom and high amount of creativity.
 
-This project can be used for Memoring and Assoiciation
+This project can be used for Memorizing and Assoiciation
 
