@@ -189,7 +189,7 @@ public class PlayerController extends SceneController {
         } else if (selectedCard != null) {
             questionLabel.setText(selectedCard.getQuestion());
             toggleAnswerBtn.setText("Show Answer");
-        } else { // no card selected}
+        } else {
             System.out.println("No card selected");
         }
     }
