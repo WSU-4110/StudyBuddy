@@ -28,6 +28,7 @@ public class PlayerController extends SceneController {
     private Deck deck;
     private DataHandlingCard ds = DataHandlingCard.getInstance();
 
+    private Card color;
     @FXML
     Label playerTitle;
     @FXML
@@ -36,6 +37,9 @@ public class PlayerController extends SceneController {
     Label questionLabel;
     @FXML
     Button toggleAnswerBtn;
+    @FXML
+    ColorPicker UColor;
+
 
     @FXML
     Slider FontS;
@@ -44,7 +48,7 @@ public class PlayerController extends SceneController {
      *
      * @param event
      */
-
+    Color cColor;
     public void switchToMain(ActionEvent event) {
 
         System.out.println("Switch to main");
@@ -132,10 +136,7 @@ public class PlayerController extends SceneController {
                 cardList.getItems().setAll(observableList);
                 cardList.setPlaceholder(new Text("No Cards in Deck"));
                 this.questionLabel.setText("No card Selected");
-
                 attachEventHandlers();
-                questionLabel.setBackground(new Background(new BackgroundFill(null, null,null)));
-                questionLabel.setTextFill(null);
 
             } else {
                 cardList.setPlaceholder(new Label("No cards found"));
@@ -175,9 +176,7 @@ public class PlayerController extends SceneController {
                     .filter(card -> card.getQuestion().equals(selectedQuestion)).findAny().orElse(null);
             this.selectedCard = selectedCard;
             questionLabel.setText(selectedCard.getQuestion());
-            questionLabel.setTextFill(selectedCard.getTextColor());
             questionLabel.setBackground(new Background(new BackgroundFill(selectedCard.getColor(), null,null)));
-
             this.toggleAnswer();
         });
     }
@@ -200,10 +199,41 @@ public class PlayerController extends SceneController {
         toggleAnswerBtn.setText("Show Answer");
     }
 
+    Color usColor = Color.WHITE;
+    public void changeColor(ActionEvent event)
+    {
+        usColor = UColor.getValue();
+        questionLabel.setBackground(new Background(new BackgroundFill(usColor, null,null)));
+        UColor.setValue(usColor);
+    }
+
+   Color getUScolor()
+    {
+        return usColor;
+    }
+
+
+    public void setusColor(Color usColor)
+    {
+        this.usColor=usColor;
+    }
+    double x = 15;
+
     public void FontC(MouseEvent event)
     {
-        double x = FontS.getValue();
+        x = FontS.getValue();
         FontS.setValue(x);
         questionLabel.setFont(Font.font("Verdana",x ));
+    }
+
+
+    int getFontS()
+    {
+        return (int) x;
+    }
+
+    public void setFontS(int x)
+    {
+        this.x=x;
     }
 }
