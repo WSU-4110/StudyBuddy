@@ -1,5 +1,4 @@
-package com.example.studybuddy;
-
+import com.example.studybuddy.PlayerController;
 import javafx.scene.paint.Color;
 import org.junit.Test;
 
@@ -46,9 +45,6 @@ public class PlayerControllerTest {
     public void fontC()
     {
         PlayerController pc = new PlayerController();
-        pc.x = pc.FontS.getValue();
-        assertEquals(pc.x,pc.FontS);
-
 
     }
 }

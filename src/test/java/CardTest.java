@@ -1,5 +1,3 @@
-package com.example.studybuddy;
-
 import com.example.studybuddy.Card;
 import javafx.scene.paint.Color;
 import org.junit.Before;
