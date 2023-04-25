@@ -1,12 +1,14 @@
+package com.example.studybuddy;
+
 import com.example.studybuddy.Card;
 import javafx.scene.paint.Color;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 class CardTest {
     Card card;
-    @BeforeEach
+    @Before
     void setUp() {
         card = new Card("Question","Answer", Color.RED, Color.BLACK);
     }
