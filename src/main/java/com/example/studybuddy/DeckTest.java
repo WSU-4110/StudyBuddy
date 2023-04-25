@@ -18,7 +18,7 @@ public class DeckTest {
     public void isEmpty() {
         Deck deck = new Deck("MyDeck");
         assertTrue(deck.isEmpty());
-        Card card = new Card("Question", "Answer", Color.BLUE);
+        Card card = new Card("Question", "Answer", Color.BLUE, Color.BLACK);
         deck.addCard(card);
         assertFalse(deck.isEmpty());
         assertTrue(deck.containsCard(card));
@@ -31,7 +31,7 @@ public class DeckTest {
     public void cardsSize() {
         Deck deck = new Deck("MyDeck");
         assertTrue(deck.isEmpty());
-        Card card = new Card("Question", "Answer", Color.BLUE);
+        Card card = new Card("Question", "Answer", Color.BLUE, Color.BLACK);
         deck.addCard(card);
         assertTrue(deck.cardsSize()==1);
 
@@ -39,8 +39,8 @@ public class DeckTest {
 
     @Test
     public void containsCard() {
-        Card card1 = new Card("Question 1", "Answer 1", Color.BLUE);
-        Card card2 = new Card("Question 2", "Answer 2", Color.RED);
+        Card card1 = new Card("Question 1", "Answer 1", Color.BLUE, Color.BLACK);
+        Card card2 = new Card("Question 2", "Answer 2", Color.RED, Color.BLACK);
         deck.addCard(card1);
 
         assertTrue("Deck should contain card1", deck.containsCard(card1));
@@ -61,8 +61,8 @@ public class DeckTest {
 
     @Test
     public void testToString() {
-        Card card1 = new Card("Question 1", "Answer 1", Color.BLUE);
-        Card card2 = new Card("Question 2", "Answer 2", Color.RED);
+        Card card1 = new Card("Question 1", "Answer 1", Color.BLUE, Color.BLACK);
+        Card card2 = new Card("Question 2", "Answer 2", Color.RED, Color.BLACK);
         deck.addCard(card1);
         deck.addCard(card2);
 

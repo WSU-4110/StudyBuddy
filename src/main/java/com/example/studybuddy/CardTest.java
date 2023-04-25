@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-class CardTest {
+public class CardTest {
     Card card;
     @Before
     void setUp() {
