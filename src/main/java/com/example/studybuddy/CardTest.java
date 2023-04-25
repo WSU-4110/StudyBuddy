@@ -59,14 +59,14 @@ public class CardTest {
     }
 
     @Test
-    void testGetTextColor() {
+    public void testGetTextColor() {
         Color actual = card.getTextColor();
         Color expected = Color.BLACK;
         assertEquals(expected, actual);
     }
 
     @Test
-    void testSetTextColor() {
+    public void testSetTextColor() {
         card.setColor(Color.GREEN);
         Color actual = card.getColor();
         Color expected = Color.GREEN;
