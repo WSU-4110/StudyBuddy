@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class MapTestActual {
+public class MapTest {
     @Test
     public void changeMulti() { assertEquals(3, Map.changeMulti(3)); }
     @Test
