@@ -14,7 +14,7 @@ public class Map implements Serializable {
         return map[x];
     }
 
-    public static Node addNode(double x, double y, String s){
+    public static Node addNode(double x, double y, String s){// adds node to map array
         if(i>max){
             extend();
         }
@@ -23,7 +23,7 @@ public class Map implements Serializable {
         return map[i-1];
     }
 
-    public static int extend()
+    public static int extend()//extends size of map array
     {
         Node map2[]=map;
         max*=setmulti;
