@@ -198,25 +198,6 @@ public class PlayerController extends SceneController {
         showAnswer = !showAnswer;
         toggleAnswerBtn.setText("Show Answer");
     }
-
-    Color usColor = Color.WHITE;
-    public void changeColor(ActionEvent event)
-    {
-        usColor = UColor.getValue();
-        questionLabel.setBackground(new Background(new BackgroundFill(usColor, null,null)));
-        UColor.setValue(usColor);
-    }
-
-   Color getUScolor()
-    {
-        return usColor;
-    }
-
-
-    public void setusColor(Color usColor)
-    {
-        this.usColor=usColor;
-    }
     double x = 15;
 
     public void FontC(MouseEvent event)
@@ -224,12 +205,6 @@ public class PlayerController extends SceneController {
         x = FontS.getValue();
         FontS.setValue(x);
         questionLabel.setFont(Font.font("Verdana",x ));
-    }
-
-
-    int getFontS()
-    {
-        return (int) x;
     }
 
     public void setFontS(int x)
